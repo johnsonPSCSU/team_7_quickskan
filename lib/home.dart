@@ -56,23 +56,34 @@ class _HomeState extends State<Home> {
 
   pickImage() async {
     //this function to grab the image from camera
-    // ignore: deprecated_member_use
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    // ignore: deprecated_member_use, invalid_use_of_visible_for_testing_member
+    var image = await ImagePicker.platform.getImage(
+      source: ImageSource.camera,
+      maxWidth: 224,
+      maxHeight: 224,
+      imageQuality: 72,
+      preferredCameraDevice: CameraDevice.rear,
+    );
 
     setState(() {
-      _image = File(image.path);
+      _image = File(image!.path);
     });
     classifyImage(_image);
   }
 
   pickGalleryImage() async {
     //this function to grab the image from gallery
-    // ignore: deprecated_member_use
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    // ignore: deprecated_member_use, invalid_use_of_visible_for_testing_member
+    var image = await ImagePicker.platform.getImage(
+      source: ImageSource.gallery,
+      maxWidth: 224,
+      maxHeight: 224,
+      imageQuality: 72,
+    );
     
 
     setState(() {
-      _image = File(image.path);
+      _image = File(image!.path);
     });
     classifyImage(_image);
   }
