@@ -50,12 +50,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
     backgroundColor: const Color.fromARGB(255, 229, 243, 253),
     appBar: AppBar(
+      leading: Image.asset('assets/QuickSkan.png') ,
       title: Text(
       "QuickSkan",
       style: TextStyle(
         color: Theme.of(context).primaryColor,
         fontSize: 25,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w700,
       ),
       ),
       centerTitle: true,

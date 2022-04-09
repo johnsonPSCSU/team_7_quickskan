@@ -12,20 +12,20 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color.fromARGB(255, 229, 243, 253),
+        color: const Color.fromARGB(255, 229, 243, 253),
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
         child: Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(30),
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             borderRadius: BorderRadius.circular(30),
           ),
           child: Column(
              
             children: [ Image.asset('assets/QuickSkan.png') , 
               const Text(  
-                      'QuickSkan is an easy to use Skin Disease recognition mobile app.\n \n',  
+                      'QuickSkan is an easy to use mobile app for\n Skin Disease Recognition. \n',  
                       style: TextStyle(fontSize: 20.0),
                       textAlign: TextAlign.center,  
                   ),

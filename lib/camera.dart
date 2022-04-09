@@ -92,13 +92,13 @@ class _CameraState extends State<Camera> {
     return Scaffold(
       
       body: Container(
-        color: Color.fromARGB(255, 220, 238, 252).withOpacity(0.9),
+        color: const Color.fromARGB(255, 220, 238, 252).withOpacity(0.9),
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
         child: Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             borderRadius: BorderRadius.circular(30),
           ),
           child: Column(
@@ -152,7 +152,7 @@ class _CameraState extends State<Camera> {
                       padding:
                           const EdgeInsets.symmetric(horizontal: 24, vertical: 17),
                       decoration: BoxDecoration(
-                          color: Colors.blueGrey[600],
+                          color: const Color.fromARGB(255, 138, 171, 205),
                           borderRadius: BorderRadius.circular(15)),
                       child: const Text(
                         'Take A Photo',
@@ -171,7 +171,7 @@ class _CameraState extends State<Camera> {
                       padding:
                           const EdgeInsets.symmetric(horizontal: 24, vertical: 17),
                       decoration: BoxDecoration(
-                          color: Colors.blueGrey[600],
+                          color: const Color.fromARGB(255, 138, 171, 205),
                           borderRadius: BorderRadius.circular(15)),
                       child: const Text(
                         'Pick From Gallery',
