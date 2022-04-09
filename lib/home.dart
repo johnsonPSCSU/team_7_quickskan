@@ -20,6 +20,14 @@ class _HomeState extends State<Home> {
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 255, 255, 255),
             borderRadius: BorderRadius.circular(30),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.blue.withOpacity(0.3),
+                spreadRadius: 2,
+                blurRadius: 7,
+                offset: Offset(0, 0), // changes position of shadow
+              ),
+            ],
           ),
           child: Column(
              
