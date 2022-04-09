@@ -1,36 +1,7 @@
-apple
-banana
-beetroot
-bell pepper
-cabbage
-capsicum
-carrot
-cauliflower
-chilli pepper
-corn
-cucumber
-eggplant
-garlic
-ginger
-grapes
-jalepeno
-kiwi
-lemon
-lettuce
-mango
-onion
-orange
-paprika
-pear
-peas
-pineapple
-pomegranate
-potato
-raddish
-soy beans
-spinach
-sweetcorn
-sweetpotato
-tomato
-turnip
-watermelon
+Actinic Keratoses and Intraepithelial Carcinoma
+Basal Cell Carcinoma 
+Benign Keratosis 
+Dermatofibroma 
+Melanoma
+Melanocytic Nevi 
+Vascular lesions 

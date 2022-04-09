@@ -37,7 +37,7 @@ class _HomeState extends State<Home> {
     //this function runs the model on the image
     var output = await Tflite.runModelOnImage(
       path: image.path,
-      numResults: 36, //the amout of categories our neural network can predict
+      numResults: 7, //the amout of categories our neural network can predict
       threshold: 0.5,
       imageMean: 127.5,
       imageStd: 127.5,
@@ -74,11 +74,10 @@ class _HomeState extends State<Home> {
   pickGalleryImage() async {
     //this function to grab the image from gallery
     // ignore: deprecated_member_use, invalid_use_of_visible_for_testing_member
-    var image = await ImagePicker.platform.getImage(
-      source: ImageSource.gallery,
-      maxWidth: 224,
-      maxHeight: 224,
-      imageQuality: 72,
+    final XFile? image = await ImagePicker().pickImage(source: ImageSource.gallery,
+                                  maxWidth: 224,
+                                  maxHeight: 224,
+                                  imageQuality: 72,
     );
     
 
@@ -92,24 +91,24 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         title: const Text(
-          'Fruits and Veggies Neural Network',
+          'QuickSkan',
           style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w200,
+              color: Color.fromARGB(255, 0, 0, 0),
+              fontWeight: FontWeight.w500,
               fontSize: 20,
               letterSpacing: 0.8),
         ),
       ),
       body: Container(
-        color: Colors.black.withOpacity(0.9),
+        color: Color.fromARGB(255, 220, 238, 252).withOpacity(0.9),
         padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 50),
         child: Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(30),
           decoration: BoxDecoration(
-            color: const Color(0x444444ff),
+            color: Color.fromARGB(255, 255, 255, 255),
             borderRadius: BorderRadius.circular(30),
           ),
           child: Column(
@@ -124,7 +123,7 @@ class _HomeState extends State<Home> {
                           height: 250,
                           width: 250,
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                             child: Image.file(
                               _image,
                               fit: BoxFit.fill,
@@ -138,11 +137,12 @@ class _HomeState extends State<Home> {
                         // ignore: unnecessary_null_comparison
                         _output != null
                             ? Text(
-                                'The object is: ${_output[0]['label']}!',
+                                'Diagnosis: ${_output[0]['label']}!\n'
+                                'Confidence Level: ${(_output[0]['confidence']*100).round()}%',
                                 style: const TextStyle(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 0, 0, 0),
                                     fontSize: 18,
-                                    fontWeight: FontWeight.w400),
+                                    fontWeight: FontWeight.w500),
                               )
                             : Container(),
                         const Divider(
