@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    backgroundColor: const Color(0xffC4DFCB),
+    backgroundColor: const Color.fromARGB(255, 229, 243, 253),
     appBar: AppBar(
       title: Text(
       "QuickSkan",
