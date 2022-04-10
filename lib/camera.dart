@@ -92,7 +92,13 @@ class _CameraState extends State<Camera> {
     return Scaffold(
       
       body: Container(
-        color: const Color.fromARGB(255, 220, 238, 252),
+        decoration: const BoxDecoration(
+        gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            colors: ([Color.fromARGB(255, 170, 212, 255), Color.fromARGB(255, 212, 170, 255)])
+        )
+      ),
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
         child: Container(
           alignment: Alignment.center,
@@ -102,10 +108,10 @@ class _CameraState extends State<Camera> {
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: Colors.blue.withOpacity(0.3),
-                spreadRadius: 2,
+                color: Colors.grey.withOpacity(0.9),
+                spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(0, 0), // changes position of shadow
+                offset: Offset(1, 1), // changes position of shadow
               ),
             ],
           ),

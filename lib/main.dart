@@ -39,7 +39,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int pageIndex = 0;
-
+  var pageController = PageController();
   final pages = [
     const Home(),
     const Camera(),
@@ -63,7 +63,16 @@ class _HomePageState extends State<HomePage> {
       centerTitle: true,
       backgroundColor: Colors.white,
     ),
-    body: pages[pageIndex],
+    body: 
+      PageView(allowImplicitScrolling: true, 
+        children: pages,
+        onPageChanged: (index){
+          setState((){
+            pageIndex = index;
+
+          });
+        },
+        controller: pageController),
     bottomNavigationBar: buildMyNavBar(context),
     );
   }
@@ -73,10 +82,7 @@ class _HomePageState extends State<HomePage> {
     height: 60,
     decoration: BoxDecoration(
       color: Theme.of(context).primaryColor,
-      borderRadius: const BorderRadius.only(
-      topLeft: Radius.circular(20),
-      topRight: Radius.circular(20),
-      ),
+
     ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -86,6 +92,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
         setState(() {
           pageIndex = 0;
+          pageController.animateToPage(pageIndex, duration: const Duration(milliseconds: 400), curve: Curves.ease);
         });
         },
         icon: pageIndex == 0
@@ -105,6 +112,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
         setState(() {
           pageIndex = 1;
+           pageController.animateToPage(pageIndex, duration: const Duration(milliseconds: 400), curve: Curves.ease);
         });
         },
         icon: pageIndex == 1
@@ -124,6 +132,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
         setState(() {
           pageIndex = 2;
+           pageController.animateToPage(pageIndex, duration: const Duration(milliseconds: 400), curve: Curves.ease);
         });
         },
         icon: pageIndex == 2

@@ -12,8 +12,14 @@ class _InfoState extends State<Info> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: const Color.fromARGB(255, 229, 243, 253),
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: (const [Color.fromARGB(255, 170, 212, 255), Color.fromARGB(255, 212, 170, 255)])
+          )
+        ),
         child: Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(30),
@@ -22,10 +28,10 @@ class _InfoState extends State<Info> {
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: Colors.blue.withOpacity(0.3),
-                spreadRadius: 2,
+                color: Colors.grey.withOpacity(0.9),
+                spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(0, 0), // changes position of shadow
+                offset: Offset(1, 1), // changes position of shadow
               ),
             ],
           ),
