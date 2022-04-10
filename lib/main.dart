@@ -43,48 +43,65 @@ class _HomePageState extends State<HomePage> {
   final pages = [
     const Home(),
     const Camera(),
-    const Info()
+    const Info(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-    backgroundColor: const Color.fromARGB(255, 229, 243, 253),
-    appBar: AppBar(
-      leading: Image.asset('assets/Quickskan.png') ,
-      title: Text(
-      "QuickSkan",
-      style: TextStyle(
-        color: Theme.of(context).primaryColor,
-        fontSize: 25,
-        fontWeight: FontWeight.w700,
-      ),
-      ),
-      centerTitle: true,
-      backgroundColor: Colors.white,
-    ),
-    body: 
-      PageView(allowImplicitScrolling: true, 
-        children: pages,
-        onPageChanged: (index){
-          setState((){
-            pageIndex = index;
-
+    return GestureDetector(
+      onVerticalDragUpdate: (details) {},
+      onHorizontalDragUpdate: (details) {
+        if (details.delta.direction > 0) {
+          setState(() {
+            pageIndex += 1;
+            pageController.animateToPage(pageIndex, duration: const Duration(milliseconds: 700), curve: Curves.ease);
           });
-        },
-        controller: pageController),
-    bottomNavigationBar: buildMyNavBar(context),
-    );
-  }
+          if (details.delta.direction < 0) {
+            setState(() {
+             
+              pageIndex -= 1;
+              pageController.animateToPage(pageIndex, duration: const Duration(milliseconds: 700), curve: Curves.ease);
+            });
+        }}},
+      
+    child: Scaffold(
+      backgroundColor: const Color.fromARGB(255, 229, 243, 253),
+      appBar: AppBar(
+        title: Text(
+        "QuickSkan",
+        style: TextStyle(
+          color: Theme.of(context).primaryColor,
+          fontSize: 25,
+          fontWeight: FontWeight.w700,
+        ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+      ),
+      body: 
+        PageView(allowImplicitScrolling: true, 
+          children: pages,
+          onPageChanged: (index){
+            setState((){
+              pageIndex = index;
+
+            });
+          },
+          controller: pageController),
+      bottomNavigationBar: buildMyNavBar(context),
+      ));
+    }
 
   Container buildMyNavBar(BuildContext context) {
     return Container(
-    height: 60,
+    height: 90,
     decoration: BoxDecoration(
       color: Theme.of(context).primaryColor,
 
     ),
+    alignment: Alignment.topCenter,
     child: Row(
+      
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
       IconButton(
@@ -92,7 +109,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
         setState(() {
           pageIndex = 0;
-          pageController.animateToPage(pageIndex, duration: const Duration(milliseconds: 400), curve: Curves.ease);
+          pageController.animateToPage(pageIndex, duration: const Duration(milliseconds: 700), curve: Curves.ease);
         });
         },
         icon: pageIndex == 0
@@ -108,31 +125,24 @@ class _HomePageState extends State<HomePage> {
           ),
       ),
       IconButton(
+        icon: Image.asset('assets/navlogo.png'),
+        iconSize: 60,
         enableFeedback: false,
         onPressed: () {
         setState(() {
           pageIndex = 1;
-           pageController.animateToPage(pageIndex, duration: const Duration(milliseconds: 400), curve: Curves.ease);
+           pageController.animateToPage(pageIndex, duration: const Duration(milliseconds: 700), curve: Curves.ease);
         });
         },
-        icon: pageIndex == 1
-          ? const Icon(
-            Icons.camera_alt_rounded,
-            color: Colors.white,
-            size: 35,
-          )
-          : const Icon(
-            Icons.camera_alt_outlined,
-            color: Color.fromARGB(255, 219, 219, 219),
-            size: 35,
-          ),
+        
+          
       ),
       IconButton(
         enableFeedback: false,
         onPressed: () {
         setState(() {
           pageIndex = 2;
-           pageController.animateToPage(pageIndex, duration: const Duration(milliseconds: 400), curve: Curves.ease);
+           pageController.animateToPage(pageIndex, duration: const Duration(milliseconds: 700), curve: Curves.ease);
         });
         },
         icon: pageIndex == 2
@@ -150,7 +160,8 @@ class _HomePageState extends State<HomePage> {
       ],
     ),
     );
-  }
+    
+    }
 }
 
 

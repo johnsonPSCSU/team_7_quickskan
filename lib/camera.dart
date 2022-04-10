@@ -111,7 +111,7 @@ class _CameraState extends State<Camera> {
                 color: Colors.grey.withOpacity(0.9),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(1, 1), // changes position of shadow
+                offset: const Offset(1, 1), // changes position of shadow
               ),
             ],
           ),

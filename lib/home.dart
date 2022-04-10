@@ -12,11 +12,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-       decoration: BoxDecoration(
+       decoration: const BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: (const [Color.fromARGB(255, 170, 212, 255), Color.fromARGB(255, 212, 170, 255)])
+              colors: ([Color.fromARGB(255, 170, 212, 255), Color.fromARGB(255, 212, 170, 255)])
           )
         ),
 
@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
                 color: Colors.grey.withOpacity(0.9),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(1, 1), // changes position of shadow
+                offset: const Offset(1, 1), // changes position of shadow
               ),
             ],
           ),
@@ -40,8 +40,18 @@ class _HomeState extends State<Home> {
              
             children: [ Image.asset('assets/Quickskan.png') , 
               const Text(  
-                      'QuickSkan: A mobile\nSkin Disease Recognition application. \n\n\n',  
+                      'QuickSkan: A mobile\nSkin Disease Recognition application.\n',  
                       style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700),
+                      textAlign: TextAlign.center,  
+                  ), 
+                  const Text(  
+                      'Created by:\n',  
+                      style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
+                      textAlign: TextAlign.center,  
+                  ),
+                   const Text(  
+                      'Radovan Pokrajac\n&\nPaul Johnson \n',  
+                      style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
                       textAlign: TextAlign.center,  
                   ),
                    const Text(  
