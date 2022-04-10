@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class Info extends StatefulWidget {
+  const Info({Key? key}) : super(key: key);
   @override
-  _HomeState createState() => _HomeState();
+  _InfoState createState() => _InfoState();
 }
 
-class _HomeState extends State<Home> {
+class _InfoState extends State<Info> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,13 +25,13 @@ class _HomeState extends State<Home> {
                 color: Colors.blue.withOpacity(0.3),
                 spreadRadius: 2,
                 blurRadius: 7,
-                offset: const Offset(0, 0), // changes position of shadow
+                offset: Offset(0, 0), // changes position of shadow
               ),
             ],
           ),
           child: Column(
              
-            children: [ Image.asset('assets/Quickskan.png') , 
+            children: [ Image.asset('assets/QuickSkan.png') , 
               const Text(  
                       'QuickSkan is an easy to use mobile app for\n Skin Disease Recognition. \n',  
                       style: TextStyle(fontSize: 20.0),
@@ -42,7 +42,9 @@ class _HomeState extends State<Home> {
                       style: TextStyle(fontSize: 16.0),
                       textAlign: TextAlign.center,  
                   )    
-              ])
+              ]
+            ),
+
         ),
       ),
     );

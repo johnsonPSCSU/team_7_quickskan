@@ -92,7 +92,7 @@ class _CameraState extends State<Camera> {
     return Scaffold(
       
       body: Container(
-        color: const Color.fromARGB(255, 220, 238, 252).withOpacity(0.9),
+        color: const Color.fromARGB(255, 220, 238, 252),
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
         child: Container(
           alignment: Alignment.center,

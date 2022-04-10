@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'camera.dart';
 import 'home.dart';
-
+import 'info.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
     title: 'Team 7 Quickskan',
     theme: ThemeData(
-      primaryColor: const Color.fromARGB(255,170, 212, 255),
+      primaryColor: Color.fromARGB(255, 143, 178, 214),
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       hoverColor: Colors.transparent,
@@ -43,6 +43,7 @@ class _HomePageState extends State<HomePage> {
   final pages = [
     const Home(),
     const Camera(),
+    const Info()
   ];
 
   @override
@@ -50,7 +51,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
     backgroundColor: const Color.fromARGB(255, 229, 243, 253),
     appBar: AppBar(
-      leading: Image.asset('assets/QuickSkan.png') ,
+      leading: Image.asset('assets/Quickskan.png') ,
       title: Text(
       "QuickSkan",
       style: TextStyle(
@@ -90,12 +91,12 @@ class _HomePageState extends State<HomePage> {
         icon: pageIndex == 0
           ? const Icon(
             Icons.home_filled,
-            color: Colors.white,
+            color: Color.fromARGB(255, 255, 255, 255),
             size: 35,
           )
           : const Icon(
             Icons.home_outlined,
-            color: Colors.white,
+            color: Color.fromARGB(255, 219, 219, 219),
             size: 35,
           ),
       ),
@@ -114,7 +115,7 @@ class _HomePageState extends State<HomePage> {
           )
           : const Icon(
             Icons.camera_alt_outlined,
-            color: Colors.white,
+            color: Color.fromARGB(255, 219, 219, 219),
             size: 35,
           ),
       ),
@@ -133,7 +134,7 @@ class _HomePageState extends State<HomePage> {
           )
           : const Icon(
             Icons.contact_support_outlined,
-            color: Colors.white,
+            color: Color.fromARGB(255, 219, 219, 219),
             size: 35,
           ),
       ),
