@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
     title: 'Team 7 Quickskan',
     theme: ThemeData(
-      primaryColor: Color.fromARGB(255, 143, 178, 214),
+      primaryColor: const Color.fromARGB(255, 143, 178, 214),
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       hoverColor: Colors.transparent,
