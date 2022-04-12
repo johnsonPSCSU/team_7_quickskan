@@ -104,26 +104,10 @@ class _InfoState extends State<Info> {
                       ),
                     ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 15.0, vertical: 15.0),
-                  child: Text(
-                    listItems[index].description,
-                    style: const TextStyle(color: Colors.black, fontSize: 16.0),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 15.0, vertical: 15.0),
-                  child: Text(
-                    listItems[index].longDescription,
-                    style: const TextStyle(color: Colors.black, fontSize: 16.0),
-                  ),
-                ),
                 index==0 ? DropdownButton<String>(
 
                   value: listItems[index].value,
-                  icon: const Icon(Icons.arrow_downward),
+                  icon: const Icon(Icons.arrow_downward, color: Colors.deepPurple,),
                   elevation: 16,
                   style: const TextStyle(color: Colors.deepPurple),
                   underline: Container(
@@ -145,8 +129,27 @@ class _InfoState extends State<Info> {
                       child: Text(value),
                     );
                   }).toList())
-              )
-              :ElevatedButton.icon(
+              ): const SizedBox(
+                  height: 0.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15.0, vertical: 15.0),
+                  child: Text(
+                    listItems[index].description,
+                    style: const TextStyle(color: Colors.black, fontSize: 16.0),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15.0, vertical: 15.0),
+                  child: Text(
+                    listItems[index].longDescription,
+                    style: const TextStyle(color: Colors.black, fontSize: 16.0),
+                  ),
+                ),
+                
+             index!=0 ? ElevatedButton.icon(
                   label: const Text("Scroll to top",  
                                     style:  TextStyle(color: Colors.deepPurple)) ,
                   icon: const Icon(Icons.arrow_upward, color: Colors.deepPurple,),
@@ -155,10 +158,13 @@ class _InfoState extends State<Info> {
                         return ;},
                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.white),) ,
 
-                ), 
+                ): 
+                const SizedBox(
+                  height: 0.0,
+                ),
                 const SizedBox(
                   height: 15.0,
-                ),
+                )
                               
             ])
             );
