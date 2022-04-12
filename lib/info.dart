@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'subinfo/list_items.dart';
-
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class Info extends StatefulWidget {
   const Info({Key? key}) : super(key: key);
@@ -10,7 +10,13 @@ class Info extends StatefulWidget {
 }
 
 class _InfoState extends State<Info> {
-  final ScrollController _controller = ScrollController();
+  final ItemScrollController _scrollController = ItemScrollController();
+  void _scrollToIndex(int index) {
+    _scrollController.scrollTo(
+        index: index,
+        duration: const Duration(seconds: 2),
+        curve: Curves.ease);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,23 +30,30 @@ class _InfoState extends State<Info> {
         ),
       child: Column(children: <Widget>[ infoItem()])
     );
-  }
 
+  }
+  
+  
+    
   Widget infoItem() {
+    var menuItem = <String>[];
+    for(var element in listItems){
+      menuItem.add(element.value);
+    }
+  
     return Container( 
       height: MediaQuery.of(context).size.height-197,
       margin: const EdgeInsets.only(left: 15.0, right:15.0),
-      child: ListView.builder(
-          scrollDirection: Axis.vertical,
+      child: ScrollablePositionedList.builder(
+          itemScrollController: _scrollController,
           itemCount: listItems.length,
-          controller: _controller,
           itemBuilder: (BuildContext context, int index) {
             return Container(
-              margin: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 20.0, top: 20.0),
+              margin: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 20.0, top: 40.0),
               width: 300.0,
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.0),
+                  borderRadius: BorderRadius.circular(30),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.9),
@@ -63,7 +76,7 @@ class _InfoState extends State<Info> {
                         style: const TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.w600,
-                            color: Colors.black),
+                            color: Colors.deepPurple),
                         textAlign: TextAlign.center, 
                       ),
                     ],
@@ -107,13 +120,51 @@ class _InfoState extends State<Info> {
                     style: const TextStyle(color: Colors.black, fontSize: 16.0),
                   ),
                 ),
+                index==0 ? DropdownButton<String>(
+
+                  value: listItems[index].value,
+                  icon: const Icon(Icons.arrow_downward),
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.deepPurple),
+                  underline: Container(
+                    height: 2,
+                    color: Colors.deepPurpleAccent,
+                  ),
+                  onChanged: (String? newValue) {
+                    for(var i in listItems){
+                      if(i.value == newValue){
+                        _scrollToIndex(i.index);
+                        return ;
+                      }
+                    }
+                  },
+                  items: (menuItem.map
+                      <DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList())
+              )
+              :ElevatedButton.icon(
+                  label: const Text("Scroll to top",  
+                                    style:  TextStyle(color: Colors.deepPurple)) ,
+                  icon: const Icon(Icons.arrow_upward, color: Colors.deepPurple,),
+                  onPressed: (){
+                        _scrollToIndex(0);
+                        return ;},
+                 style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.white),) ,
+
+                ), 
                 const SizedBox(
                   height: 15.0,
                 ),
-              ]),
+                              
+            ])
             );
-          }),
-    );
+
+          })
+        );
   }
 }
 

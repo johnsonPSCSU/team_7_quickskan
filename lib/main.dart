@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       hoverColor: Colors.transparent,
+      
     ),
     debugShowCheckedModeBanner: false,
     home: const HomePage(),
@@ -46,8 +47,10 @@ class _HomePageState extends State<HomePage> {
     const Info(),
   ];
 
+  
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
       onVerticalDragUpdate: (details) {},
       onHorizontalDragUpdate: (details) {
@@ -88,7 +91,8 @@ class _HomePageState extends State<HomePage> {
             });
           },
           controller: pageController),
-      bottomNavigationBar: buildMyNavBar(context),
+       
+       bottomNavigationBar: buildMyNavBar(context),
       ));
     }
 
